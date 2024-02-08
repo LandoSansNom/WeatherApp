@@ -1,16 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.cherlan.weatherapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.cherlan.weatherapp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -18,6 +21,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val apiKey: String by project
+        buildConfigField("String","apiKey",apiKey)
     }
 
     buildTypes {
@@ -38,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -66,4 +73,17 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation("com.google.dagger:hilt-android:2.49")
+    kapt("com.google.dagger:hilt-compiler:2.45")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0-rc01")
+
+
 }
