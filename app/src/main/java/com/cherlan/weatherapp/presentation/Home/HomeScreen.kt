@@ -1,4 +1,4 @@
-package com.cherlan.weatherapp.presentation
+package com.cherlan.weatherapp.presentation.Home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text

@@ -9,6 +9,5 @@ interface WeatherApiService{
     @GET(ApiDetails.foreCastEndpoint)
     suspend fun getWeatherForeCast(
         @Query("id") id: Int,
-        @Query("appid") appid: String
     ) : Response<ForeCast>
 }
