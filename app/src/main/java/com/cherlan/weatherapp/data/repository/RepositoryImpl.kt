@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(private val weatherApiService: WeatherApiService) : Repository {
-    override suspend fun getWeatherForeCast(id: Int): Flow<Result> {
+    override suspend fun getWeatherForeCast(id: Int, units: String): Flow<Result> {
         return flow {
             emit(Result.Loading)
-            val response = weatherApiService.getWeatherForeCast(id)
+            val response = weatherApiService.getWeatherForeCast(id,units)
 
             if (response.isSuccessful) {
                 response.body()?.let {
