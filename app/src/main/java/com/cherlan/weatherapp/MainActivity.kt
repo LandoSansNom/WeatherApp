@@ -15,6 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.cherlan.weatherapp.data.remote.WeatherApiService
 import com.cherlan.weatherapp.data.repository.RepositoryImpl
 import com.cherlan.weatherapp.domain.Result
+import com.cherlan.weatherapp.presentation.Home.CurrentWeather
+import com.cherlan.weatherapp.presentation.Home.HomeScreen
 import com.cherlan.weatherapp.presentation.Home.HomeViewModel
 import com.cherlan.weatherapp.ui.theme.WeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,14 +37,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
                     val uiState = homeViewModel.foreCastState.collectAsState().value
 
                     when(uiState){
                         is Result.Failure -> println("response failure ${uiState.error}")
                         Result.Loading -> println("response loading $uiState")
-                        is Result.Success -> println("response success ${uiState.data}")
+                        is Result.Success -> HomeScreen(foreCast = uiState.data)
                     }
+
 
                 }
             }
