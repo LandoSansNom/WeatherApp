@@ -12,15 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.cherlan.weatherapp.data.remote.WeatherApiService
-import com.cherlan.weatherapp.data.repository.RepositoryImpl
 import com.cherlan.weatherapp.domain.Result
-import com.cherlan.weatherapp.presentation.Home.CurrentWeather
 import com.cherlan.weatherapp.presentation.Home.HomeScreen
 import com.cherlan.weatherapp.presentation.Home.HomeViewModel
 import com.cherlan.weatherapp.ui.theme.WeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
