@@ -13,6 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel(){
+
     private val _foreCastState = MutableStateFlow<Result>(Result.Loading)
     val foreCastState = _foreCastState.asStateFlow()
 
