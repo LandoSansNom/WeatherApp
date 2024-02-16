@@ -24,7 +24,7 @@ import com.cherlan.weatherapp.presentation.navigation.BottomNavigationBar
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(foreCast: ForeCast) {
-    var filteredWeatherModels by remember { mutableStateOf(emptyList<WeatherModel?>()) }
+    var WeatherModels by remember { mutableStateOf(foreCast.list?.filter { it?.dtTxt?.startsWith(foreCast.list.get(0)?.dtTxt?.substring(0,10) ?: "") ?: false  }) }
 
     Scaffold(
         bottomBar = {
@@ -45,10 +45,10 @@ fun HomeScreen(foreCast: ForeCast) {
                 CurrentWeatherWidget(foreCast = foreCast)
                 Spacer(modifier = Modifier.height(25.dp))
                 DateItems(weatherModels = foreCast.list!!){date->
-                    filteredWeatherModels = foreCast.list.filter { it?.dtTxt?.startsWith(date) ?: false }
+                    WeatherModels = foreCast.list.filter { it?.dtTxt?.startsWith(date) ?: false }
                 }
                 Spacer(modifier = Modifier.height(25.dp))
-                SmallWeatherWidgets(weatherModels = filteredWeatherModels)
+                SmallWeatherWidgets(weatherModels = WeatherModels!!)
                 Spacer(modifier = Modifier.height(25.dp))
                 AdditionalInfoWidget()
 
