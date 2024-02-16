@@ -43,10 +43,6 @@ fun DateItems(weatherModels: List<WeatherModel?>, onDateClicked: (String) -> Uni
             if (weatherModelForDate != null) {
                 DateItem(weatherModelForDate) { date ->
                     onDateClicked(date)
-//                    val filteredWeatherModels = weatherModels.filter { weathermodel ->
-//                        weathermodel?.dtTxt?.startsWith(date) ?: false
-//                    }
-//                    SmallWeatherWidgets(weatherModels = filteredWeatherModels)
                 }
             }
 
